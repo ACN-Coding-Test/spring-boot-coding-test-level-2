@@ -24,8 +24,7 @@ public class Project {
 	@Type(type = "uuid-char")
 	private UUID id;
 	@Column(name="name",nullable=false)
-	private String name;
-	
+	private String project_name;
 	
 	public UUID getId() {
 		return id;
@@ -33,17 +32,16 @@ public class Project {
 	public void setId(UUID id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getProject_name() {
+		return project_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
 	}
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name + "]";
-	}
-	
+		return "Project [id=" + id + ", project_name=" + project_name + "]";
+  }
 	
 	
 
