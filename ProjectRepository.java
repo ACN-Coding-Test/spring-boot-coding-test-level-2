@@ -10,4 +10,5 @@ import com.accenture.codingtest.springbootcodingtest.entity.Project;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
+
 }

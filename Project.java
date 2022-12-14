@@ -26,7 +26,6 @@ public class Project {
 	@Column(name="name",nullable=false)
 	private String project_name;
 	
-	
 	public UUID getId() {
 		return id;
 	}
@@ -42,8 +41,7 @@ public class Project {
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", project_name=" + project_name + "]";
-	}
-	
+  }
 	
 	
 
