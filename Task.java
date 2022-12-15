@@ -87,10 +87,12 @@ public class Task {
 		this.project_id = project_id;
 		this.user_id = user_id;
 	}
+
 	public Task() {
 	}
 	
 	
+
 
 	
 	
