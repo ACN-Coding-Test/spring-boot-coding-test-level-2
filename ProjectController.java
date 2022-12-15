@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accenture.codingtest.springbootcodingtest.entity.Project;
+import com.accenture.codingtest.springbootcodingtest.entity.User;
 import com.accenture.codingtest.springbootcodingtest.service.ProjectService;
 import com.accenture.codingtest.springbootcodingtest.AppConstants;
 import com.accenture.codingtest.springbootcodingtest.ProjectResponse;
@@ -42,10 +46,21 @@ public class ProjectController {
 		return service.findOneProject(id);
 	}
 	
-	@PostMapping
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public ResponseEntity<Object> createUser(
+			@RequestHeader(name = "X-RAM-PERSIST", required = true) String headerPersist,
+			@RequestBody Project project)
+	{
+		 service.saveProject(project);
+		return new ResponseEntity<>(
+				"Project is created successfully with id = " + project.getId(),
+				HttpStatus.CREATED);
+	}
+	
+	/*@PostMapping
 	public void saveProject(@RequestBody Project project) {
 		 service.saveProject(project);
-	}
+	}*/
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Project> updateProject(@PathVariable UUID id,@RequestBody Project project) {

@@ -78,4 +78,16 @@ public class Task {
 		return "Task [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status
 				+ ", project_id=" + project_id + ", user_id=" + user_id + "]";
 	}
+	public Task(UUID id, String title, String description, String status, UUID project_id, UUID user_id) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.status = status;
+		this.project_id = project_id;
+		this.user_id = user_id;
+	}
+
+	
+	
 }

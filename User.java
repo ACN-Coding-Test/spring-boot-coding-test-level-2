@@ -63,6 +63,15 @@ public class User {
 		return "User [user_id=" + user_id + ", userName=" + userName + ", password=" + password + ", role=" + role
 				+ "]";
 	}
+	public User(UUID user_id, String userName, String password, String role) {
+		super();
+		this.user_id = user_id;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+	
+	
 	
 	
 	
