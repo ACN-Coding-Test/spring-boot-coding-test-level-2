@@ -43,6 +43,17 @@ public class Project {
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + "]";
 	}
+	public Project(UUID id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public Project() {
+	}
+	
+	
+
+	
 	
 	
 	
