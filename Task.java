@@ -88,6 +88,12 @@ public class Task {
 		this.user_id = user_id;
 	}
 
+	public Task() {
+	}
+	
+	
+
+
 	
 	
 }
