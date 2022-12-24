@@ -1,0 +1,392 @@
+{
+  "info": {
+    "_postman_id": "778c2053-0f83-4134-b4de-1ed2ea91544b",
+    "name": "test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12955589"
+  },
+  "item": [
+    {
+      "name": "save users",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"userName\": \"User1\",\n    \"password\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get user by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users/5a289268-4823-43bd-ac01-ca6e0e672a20?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "5a289268-4823-43bd-ac01-ca6e0e672a20"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update users",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"userName\": \"User\",\n    \"password\": \"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users/5a289268-4823-43bd-ac01-ca6e0e672a20?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "5a289268-4823-43bd-ac01-ca6e0e672a20"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update password (patch)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"password\": \"12433433\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users/5a289268-4823-43bd-ac01-ca6e0e672a20?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "5a289268-4823-43bd-ac01-ca6e0e672a20"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete user",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/users/5a289268-4823-43bd-ac01-ca6e0e672a20?role=ADMIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "5a289268-4823-43bd-ac01-ca6e0e672a20"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "ADMIN"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add project",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"API development\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/projects?role=PRODUCT_OWNER",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "projects"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "PRODUCT_OWNER"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add task",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"develop test\",\n    \"description\": \"develop new API for test purpose\",\n    \"status\": \"in progress\"\n    ,\n    \"user\": {\n         \"id\": \"d8ac8677-7eac-4515-b319-63561a12862d\",\n    \"userName\": \"firas\",\n    \"password\": \"123456\"\n    },\n    \"project\": {\n       \"id\": \"2243913e-8793-4993-ac97-9ecbfffb4f74\",\n        \"name\": \"API development\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/task?projectId=4048d48c-b45f-4321-a2ed-0aa9df096e35&role=PRODUCT_OWNER",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "task"
+          ],
+          "query": [
+            {
+              "key": "projectId",
+              "value": "4048d48c-b45f-4321-a2ed-0aa9df096e35"
+            },
+            {
+              "key": "role",
+              "value": "PRODUCT_OWNER"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get projects by user id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/projects?userId=d8ac8677-7eac-4515-b319-63561a12862d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "projects"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "d8ac8677-7eac-4515-b319-63561a12862d"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get task by user id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/task/d8ac8677-7eac-4515-b319-63561a12862d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "task",
+            "d8ac8677-7eac-4515-b319-63561a12862d"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get task by project id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/tasks/2243913e-8793-4993-ac97-9ecbfffb4f74",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "tasks",
+            "2243913e-8793-4993-ac97-9ecbfffb4f74"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update status",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"status\": \"IN_PROGRESS\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/tasks/status?userId=d8ac8677-7eac-4515-b319-63561a12862d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "tasks",
+            "status"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "PRODUCT_OWNER",
+              "disabled": true
+            },
+            {
+              "key": "userId",
+              "value": "d8ac8677-7eac-4515-b319-63561a12862d"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
