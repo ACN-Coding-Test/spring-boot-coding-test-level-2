@@ -10,6 +10,6 @@ import java.util.UUID;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 
-    Task getTasksByUserId(UUID userId);
+    Task findTasksByUserId(UUID userId);
     List<Task> getTasksByProjectId(UUID projectId);
 }

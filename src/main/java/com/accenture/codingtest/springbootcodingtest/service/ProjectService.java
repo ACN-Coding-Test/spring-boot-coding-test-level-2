@@ -2,8 +2,10 @@ package com.accenture.codingtest.springbootcodingtest.service;
 
 import com.accenture.codingtest.springbootcodingtest.entity.Project;
 import com.accenture.codingtest.springbootcodingtest.entity.Users;
+import com.accenture.codingtest.springbootcodingtest.enums.Roles;
 import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepository;
 import com.accenture.codingtest.springbootcodingtest.repository.UserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +26,12 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
-    public Project createNewProject(Project project) {
-        projectRepository.save(project);
-        return project;
+    public Project createNewProject(Project project, String role) {
+        if(StringUtils.equals(Roles.PRODUCT_OWNER.toString(), role)) {
+            projectRepository.save(project);
+            return project;
+        }
+        return null;
     }
 
     public List<Project> getAllProjects(UUID userId) {

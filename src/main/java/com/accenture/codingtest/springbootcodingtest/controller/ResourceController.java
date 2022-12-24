@@ -36,40 +36,43 @@ public class ResourceController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Users> createResource(@RequestBody Users user) {
-        return ResponseEntity.ok(userService.createUser(user));
+    public ResponseEntity<Users> createResource(@RequestBody Users user, @RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(userService.createUser(user, role));
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<Users>> getUsers() {
-        return ResponseEntity.ok(userService.getAllUsers());
+    public ResponseEntity<List<Users>> getUsers(@RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(userService.getAllUsers(role));
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<Users> getUserById(@PathVariable(name = "id") UUID id) {
-        return ResponseEntity.ok(userService.getUserById(id));
+    public ResponseEntity<Users> getUserById(@PathVariable(name = "id") UUID id, @RequestParam("role") String role) {
+        return ResponseEntity.ok(userService.getUserById(id, role));
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<Users> updateResource(@RequestBody Users users, @PathVariable(name = "id") UUID id) {
-        return ResponseEntity.ok(userService.updateUser(users, id));
+    public ResponseEntity<Users> updateResource(@RequestBody Users users, @PathVariable(name = "id") UUID id, @RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(userService.updateUser(users, id, role));
     }
 
     @PatchMapping("/users/{id}")
-    public String updateOneResource(@RequestBody Users users, @PathVariable(name = "id") UUID id) {
-        userService.updateUserPassword(users, id);
-        return "Your password has been set successfully";
+    public ResponseEntity<String> updateOneResource(@RequestBody Users users, @PathVariable(name = "id") UUID id, @RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(userService.updateUserPassword(users, id, role));
     }
 
     @DeleteMapping("/users/{id}")
-    public String deleteResource(@PathVariable(name = "id") UUID id) {
-        userService.deleteUser(id);
-        return "User has been deleted successfully";
+    public ResponseEntity<String> deleteResource(@PathVariable(name = "id") UUID id, @RequestParam("role") String role) {
+        return ResponseEntity.ok(userService.deleteUser(id, role));
     }
 
     @PostMapping("/task")
-    public ResponseEntity<Task> addNewTask(@RequestBody Task task, @RequestParam(name = "userId") UUID userId) {
-        return ResponseEntity.ok(taskService.createTask(task, userId));
+    public ResponseEntity<Task> addNewTask(@RequestBody Task task, @RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(taskService.createTask(task, role));
+    }
+
+    @PutMapping("/tasks/status")
+    public ResponseEntity<Task> updateTaskStatus(@RequestBody Task task, @RequestParam(name = "userId") UUID userId) {
+        return ResponseEntity.ok(taskService.updateStatus(task,userId));
     }
 
     @GetMapping("/task/{userId}")
@@ -83,8 +86,8 @@ public class ResourceController {
     }
 
     @PostMapping("/projects")
-    public ResponseEntity<Project> createProject(@RequestBody Project project) {
-        return ResponseEntity.ok(projectService.createNewProject(project));
+    public ResponseEntity<Project> createProject(@RequestBody Project project, @RequestParam(name = "role") String role) {
+        return ResponseEntity.ok(projectService.createNewProject(project, role));
     }
 
     @GetMapping("/projects")

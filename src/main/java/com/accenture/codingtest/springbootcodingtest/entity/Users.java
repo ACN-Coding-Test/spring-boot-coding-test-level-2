@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ public class Users {
 
     @Column(name = "user_name", unique = true)
     @NotNull(message = "user name is required")
-    private String username;
+    private String userName;
 
     @Column(name = "password")
     @NotNull(message = "password is required")
@@ -28,9 +28,9 @@ public class Users {
 
     public Users() {}
 
-    public Users(UUID id, String username, String password) {
+    public Users(UUID id, String userName, String password) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
     }
 
@@ -43,11 +43,11 @@ public class Users {
     }
 
     public String getUserName() {
-        return this.username;
+        return this.userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -62,7 +62,7 @@ public class Users {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
