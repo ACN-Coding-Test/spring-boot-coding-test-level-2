@@ -2,72 +2,46 @@ package com.accenture.codingtest.springbootcodingtest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "task")
 public class Task {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id", length = 40)
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String id;
-	@Column(name = "title", length = 250, nullable = false)
+
+	@Column(name = "title", nullable = false)
 	private String title;
-	@Column(name = "description")
+
+	@Column(name = "description", nullable = true)
 	private String description;
-	@Column(name = "status", nullable = false)
-	private String status;
-	@Column(name = "project_id", nullable = false)
-	private String projectId;
-	@Column(name = "user_id", nullable = false)
-	private String userId;
 
-	public String getId() {
-		return id;
-	}
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", length = 40, nullable = false)
+	private TaskStatusEnum status;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "project_id", nullable = false)
+	private Project project;
 
-	public String getTitle() {
-		return title;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getProjectId() {
-		return projectId;
-	}
-
-	public void setProjectId(String projectId) {
-		this.projectId = projectId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 }

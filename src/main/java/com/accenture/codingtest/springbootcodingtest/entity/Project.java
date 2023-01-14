@@ -2,33 +2,26 @@ package com.accenture.codingtest.springbootcodingtest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "project")
 public class Project {
 
-	@Id
-	@Column(name = "id")
-	private String id;
-	@Column(name = "name", length = 200, unique = true)
-	private String name;
+    @Id
+    @Column(name = "id", length = 40)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    private String id;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
 
 }
