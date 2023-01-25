@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Project Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Project Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/api/v1/users}">Task</a>
+        <li class="nav-item">
+        <a class="nav-link" th:href="@{/api/v1/users}">User</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+<div class ="container">
+		<div class = "row">
+			<h1> List Tasks </h1>
+		</div>
+		
+		<div class = "row">
+			<div class = "col-lg-3">
+				<a th:href = "@{/api/v1/tasks/new}" class = "btn btn-primary btn-sm mb-3"> Add Task</a>
+			</div>
+		</div>
+		<table class = "table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+					<th> Task Id</th>
+					<th> Task Title</th>
+					<th> Task Description</th>
+					<th> Task Status </th>
+					<th> Task Project_Id </th>
+					<th> Task Task_Id </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "task: ${tasks}">
+					<td th:text = "${task.taskId}"></td>
+					<td th:text = "${task.taskTitle}"></td>
+					<td th:text = "${task.taskDescription}"></td>
+					<td th:text = "${task.taskStatus}"></td>
+					<td th:text = "${task.taskProject_Id}"></td>
+					<td th:text = "${task.taskTask_Id}"></td>
+					<td>
+						<a th:href = "@{/api/v1/tasks/edit/{id}(id=${task.id})}"
+						 class = "btn btn-primary">Update</a>
+						
+						<a th:href = "@{/api/v1/tasks/{id}(id=${task.id})}"
+						 class = "btn btn-danger">Delete</a>
+						 
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+	</div>
+
+</body>
+</html>
