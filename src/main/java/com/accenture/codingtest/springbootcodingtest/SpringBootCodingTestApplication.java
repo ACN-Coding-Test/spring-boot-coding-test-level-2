@@ -8,6 +8,7 @@ public class SpringBootCodingTestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootCodingTestApplication.class, args);
+		System.out.println("****************BOOOOOOOOOOOOOOTED*******************");
 	}
 
 }
