@@ -1,5 +1,6 @@
 package com.accenture.codingtest.springbootcodingtest.entity;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -14,8 +15,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Project {
+public class Project implements Serializable{
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6476940302896158570L;
+
 	@Id
 	@Column(name = "id")
 	private UUID id;
