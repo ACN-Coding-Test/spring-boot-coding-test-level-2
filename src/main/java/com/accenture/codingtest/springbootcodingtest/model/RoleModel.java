@@ -10,26 +10,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserModel implements Serializable{
-
+public class RoleModel implements Serializable{
+	
+	
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1185129676552210354L;
-	
+	private static final long serialVersionUID = 1322907224617771740L;
+
 	private UUID id;
 
 	private String username;
-
-	private String password;
-	
-	private Boolean isActive;
-	
-	private String role;
-
-
-
-	
 	
 	
 

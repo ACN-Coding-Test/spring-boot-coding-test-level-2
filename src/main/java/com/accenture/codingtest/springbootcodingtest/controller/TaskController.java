@@ -6,6 +6,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -28,35 +30,41 @@ public class TaskController {
 	TaskService taskService;
 	
 		
-		@PostMapping(value = "/Task")
-		public ResponseEntity<TaskModel> project(@RequestBody TaskModel taskModel) throws Exception {
+		@PostMapping(value = "/Task/Task")
+		@PreAuthorize("hasAuthority('ROLE_PRODUCT_OWNER')")
+		@Secured("ROLE_PRODUCT_OWNER")
+		public ResponseEntity<TaskModel> task(@RequestBody TaskModel taskModel) throws Exception {
 			TaskModel taskModel1 = taskService.task(taskModel);
 	        return new ResponseEntity<>(taskModel1, HttpStatus.CREATED);
 	        }
 		
-		@PutMapping(value = "/updateTaskIdempotent")
+		@PutMapping(value = "/Task/updateTaskIdempotent")
+		@PreAuthorize("hasAuthority('ROLE_PRODUCT_OWNER')")
+		@Secured("ROLE_PRODUCT_OWNER")
 		public ResponseEntity<String> updateTaskIdempotent(@PathVariable UUID id) throws Exception{
 			TaskModel taskModel = taskService.getTaskById(id);
 			return new ResponseEntity<>(taskService.updateTaskIdempotent(taskModel), HttpStatus.OK);
 		}
 		
-		@PatchMapping(value = "/updateTask")
+		@PatchMapping(value = "/Task/updateTask")
+		@PreAuthorize("hasAuthority('ROLE_PRODUCT_OWNER')")
+		@Secured("ROLE_PRODUCT_OWNER")
 		public ResponseEntity<String> updateTask (@PathVariable UUID id) throws Exception{
 			TaskModel taskModel = taskService.getTaskById(id);
 			return new ResponseEntity<>(taskService.updateTask(taskModel,null), HttpStatus.OK);
 		}
 		
-		@DeleteMapping(value = "/DeleteTask")
+		@DeleteMapping(value = "/Task/DeleteTask")
 		public ResponseEntity<String> deleteTaskById (@PathVariable UUID id) throws Exception{
 			return new ResponseEntity<>(taskService.deleteTaskById(id), HttpStatus.OK);
 		}
 		
-		@GetMapping(value = "/GetTaskById")
+		@GetMapping(value = "/Task/GetTaskById")
 		public ResponseEntity<TaskModel> getTaskById (@PathVariable UUID id) throws Exception{
 			return new ResponseEntity<>(taskService.getTaskById(id), HttpStatus.OK);
 		}
 		
-		@GetMapping(value = "/GetAllTasks")
+		@GetMapping(value = "/Task/GetAllTasks")
 		public ResponseEntity<List<TaskModel>> getAllTasks () throws Exception{
 			return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
 		}
