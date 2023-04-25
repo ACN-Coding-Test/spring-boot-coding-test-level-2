@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.accenture.codingtest.springbootcodingtest.constant.TaskStatus;
 import com.accenture.codingtest.springbootcodingtest.entity.Task;
 import com.accenture.codingtest.springbootcodingtest.model.TaskModel;
 import com.accenture.codingtest.springbootcodingtest.repository.TaskRepo;
@@ -31,6 +32,7 @@ public class TaskServiceImpl implements TaskService{
 		Task taskDomain = new Task();
 		UUID id = idGenerate.GenerateId();
 		taskModel.setId(id);
+		taskModel.setStatus(TaskStatus.NOT_STARTED);
 		BeanUtils.copyProperties(taskModel, taskDomain);
 		taskRepo.save(taskDomain);
 		return taskModel;

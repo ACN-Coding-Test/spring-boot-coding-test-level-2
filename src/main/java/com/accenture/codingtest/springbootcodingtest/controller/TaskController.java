@@ -39,16 +39,12 @@ public class TaskController {
 	        }
 		
 		@PutMapping(value = "/Task/updateTaskIdempotent")
-		@PreAuthorize("hasAuthority('ROLE_PRODUCT_OWNER')")
-		@Secured("ROLE_PRODUCT_OWNER")
 		public ResponseEntity<String> updateTaskIdempotent(@PathVariable UUID id) throws Exception{
 			TaskModel taskModel = taskService.getTaskById(id);
 			return new ResponseEntity<>(taskService.updateTaskIdempotent(taskModel), HttpStatus.OK);
 		}
 		
 		@PatchMapping(value = "/Task/updateTask")
-		@PreAuthorize("hasAuthority('ROLE_PRODUCT_OWNER')")
-		@Secured("ROLE_PRODUCT_OWNER")
 		public ResponseEntity<String> updateTask (@PathVariable UUID id) throws Exception{
 			TaskModel taskModel = taskService.getTaskById(id);
 			return new ResponseEntity<>(taskService.updateTask(taskModel,null), HttpStatus.OK);
