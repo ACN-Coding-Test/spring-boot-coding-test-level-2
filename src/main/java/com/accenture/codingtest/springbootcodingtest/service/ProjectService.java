@@ -4,6 +4,7 @@ import com.accenture.codingtest.springbootcodingtest.model.ProjectDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public interface ProjectService {
@@ -19,4 +20,6 @@ public interface ProjectService {
 
     void deleteProject(UUID projectId);
     ResponseEntity<?> assignTasksToMembers(UUID projectId, UUID userId, List<UUID> tasks);
+    ResponseEntity<Map<String, Object>> getProjectWithPaginationAndSort(String name, int pageIndex, int pageSize, String sortBy, String sortDirection);
+
 }

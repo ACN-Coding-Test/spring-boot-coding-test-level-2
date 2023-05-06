@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -61,5 +62,14 @@ public class ProjectController {
                                                       @PathVariable("user_id") UUID userID,
                                                       @RequestParam List<UUID> tasks){
         return projectService.assignTasksToMembers(projectId, userID, tasks);
+    }
+
+    @GetMapping
+    private ResponseEntity<Map<String, Object>> getProjectWithPaginationAndSort(@RequestParam(required = false) String q,
+                                                                                @RequestParam(defaultValue = "0") int pageIndex,
+                                                                                @RequestParam(defaultValue = "3") int pageSize,
+                                                                                @RequestParam(defaultValue = "name") String sortBy,
+                                                                                @RequestParam(defaultValue = "ASC") String sortDirection){
+        return projectService.getProjectWithPaginationAndSort(q, pageIndex, pageSize, sortBy, sortDirection);
     }
 }

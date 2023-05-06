@@ -10,14 +10,15 @@ import com.accenture.codingtest.springbootcodingtest.repository.UserRepository;
 import com.accenture.codingtest.springbootcodingtest.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -108,5 +109,29 @@ public class ProjectServiceImpl implements ProjectService {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
         return ResponseEntity.badRequest().build();
+    }
+
+    @Override
+    public ResponseEntity<Map<String, Object>> getProjectWithPaginationAndSort(String name, int pageIndex, int pageSize,
+                                                                               String sortBy, String sortDirection) {
+        List<Project> projectList;
+        Sort.Direction direction = sortDirection.equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Pageable paging = PageRequest.of(pageIndex, pageSize, Sort.by(direction, sortBy));
+
+        if (Objects.nonNull(name)) {
+            projectList = projectRepository.findByNameIgnoreCase(name, paging);
+        }else{
+            Page<Project> projectPage = projectRepository.findAll(paging);
+            projectList = projectPage.getContent();
+        }
+
+        if (projectList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        Map<String, Object> response = new HashMap<>();
+        response.put("projects", projectList);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+
     }
 }
