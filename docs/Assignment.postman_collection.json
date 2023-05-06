@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "9f0fbc07-9635-467d-80fb-f8473e40459e",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23153019"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password@123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users/a2652d75-774a-43fe-937c-e772d0578e98",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"a2652d75-774a-43fe-937c-e772d0578e98"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test-2\",\r\n    \"password\": \"password@123\",\r\n    \"role\" : \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Asanka\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users/8c84fa3a-23c8-47cf-8d47-9916bad70a38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8c84fa3a-23c8-47cf-8d47-9916bad70a38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Asanka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users/8c84fa3a-23c8-47cf-8d47-9916bad70a38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8c84fa3a-23c8-47cf-8d47-9916bad70a38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users/50330020-2c66-4e42-9a64-17a08417b89e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"50330020-2c66-4e42-9a64-17a08417b89e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Get projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects/8c84fa3a-23c8-47cf-8d47-9916bad70a38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"8c84fa3a-23c8-47cf-8d47-9916bad70a38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"SMS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project by PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Asanka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects/f76bd4ad-bfd4-434b-a0cf-da07a2a6c047",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"f76bd4ad-bfd4-434b-a0cf-da07a2a6c047"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project by PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test-project\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects/f76bd4ad-bfd4-434b-a0cf-da07a2a6c047",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"f76bd4ad-bfd4-434b-a0cf-da07a2a6c047"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9292/api/v1/projects/f76bd4ad-bfd4-434b-a0cf-da07a2a6c047",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"f76bd4ad-bfd4-434b-a0cf-da07a2a6c047"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Get Tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/tasks/810984c6-2f4c-4660-af7d-f6552fb1db2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"810984c6-2f4c-4660-af7d-f6552fb1db2a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Test-task\",\r\n    \"description\" : \"create a test task\",\r\n    \"project\" : \"f76bd4ad-bfd4-434b-a0cf-da07a2a6c047\",\r\n    \"user\" : \"0e088912-ff38-4468-bb25-b738dfd6baa9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task by PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Asanka\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/users/8c84fa3a-23c8-47cf-8d47-9916bad70a38",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"8c84fa3a-23c8-47cf-8d47-9916bad70a38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task by PATCH",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"login\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9292/api/v1/task/810984c6-2f4c-4660-af7d-f6552fb1db2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"810984c6-2f4c-4660-af7d-f6552fb1db2a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9292/api/v1/tasks/810984c6-2f4c-4660-af7d-f6552fb1db2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9292",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"810984c6-2f4c-4660-af7d-f6552fb1db2a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
