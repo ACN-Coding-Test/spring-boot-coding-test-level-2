@@ -125,4 +125,18 @@ public class TaskServiceImpl implements TaskService {
         }
         taskRepository.deleteById(taskId);
     }
+
+    @Override
+    public Task updateStatus(UUID taskId, String status, UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User was not found with ID : " + userId));
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new NoSuchElementException("Task was not found with ID : " + taskId));
+
+        if (Objects.equals(task.getUser().getUsername(), user.getUsername())) {
+            task.setStatus(TaskStatus.valueOf(status));
+            return taskRepository.save(task);
+        }
+        return null;
+    }
 }

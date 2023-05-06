@@ -1,5 +1,6 @@
 package com.accenture.codingtest.springbootcodingtest.service;
 
+import com.accenture.codingtest.springbootcodingtest.entity.Task;
 import com.accenture.codingtest.springbootcodingtest.model.TaskDTO;
 import org.springframework.http.ResponseEntity;
 
@@ -18,4 +19,5 @@ public interface TaskService {
     ResponseEntity<?> updateTaskByPatch(UUID taskId, TaskDTO taskDTO);
 
     void deleteTask(UUID taskId);
+    Task updateStatus(UUID taskId, String status, UUID userId);
 }
