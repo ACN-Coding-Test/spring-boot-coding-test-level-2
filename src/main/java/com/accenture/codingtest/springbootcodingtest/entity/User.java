@@ -4,14 +4,16 @@ package com.accenture.codingtest.springbootcodingtest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.stereotype.Component;
+@Component
 @Entity
+@Table(name="user09")
 public class User {
 
 	@Id
