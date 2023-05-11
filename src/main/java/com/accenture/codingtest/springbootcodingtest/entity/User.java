@@ -2,6 +2,7 @@ package com.accenture.codingtest.springbootcodingtest.entity;
 
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,34 @@ public class User {
 	@Column(unique=true)
     private String user_name;
 	@NotBlank(message = "Password can not be empty !!")
+	@Column(unique = true)
+	private String email;
     private String password;
+    @Column(name = "isActive")
+	private Boolean isActive;
+
+	@Column(name = "role")
+	private String role;
+	 
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public int getUser_id() {
 		return user_id;
 	}

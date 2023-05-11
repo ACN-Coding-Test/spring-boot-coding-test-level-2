@@ -1,6 +1,8 @@
 package com.accenture.codingtest.springbootcodingtest.entity;
 
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class Task {
 
@@ -24,9 +28,11 @@ public class Task {
     @NotBlank(message = "Status can not be empty !!")
     private String status;
     @NotBlank(message = "Project Id can not be empty !!")
-    private int project_id;
+    private UUID project_id;
     @NotBlank(message = "User Id can not be empty !!")
-    private int user_id;
+    
+    private UUID user_id;
+    
 	public int getTaskId() {
 		return taskId;
 	}
@@ -51,17 +57,17 @@ public class Task {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getProject_id() {
+	public @NotBlank(message = "Project Id can not be empty !!") UUID getProject_id() {
 		return project_id;
 	}
-	public void setProject_id(int project_id) {
-		this.project_id = project_id;
+	public void setProject_id(UUID uuid) {
+		this.project_id = uuid;
 	}
-	public int getUser_id() {
+	public @NotBlank(message = "User Id can not be empty !!") UUID getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser_id(UUID uuid) {
+		this.user_id = uuid;
 	}
     
 
