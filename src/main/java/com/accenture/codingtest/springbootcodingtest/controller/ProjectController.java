@@ -5,6 +5,7 @@ import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "api/v1/projects")
 public class ProjectController {
+
     private final ProjectRepository projectRepository;
 
     @Autowired
@@ -27,6 +29,7 @@ public class ProjectController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('PRODUCT_OWNER')")
     public ResponseEntity<List<Project>> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
         return ResponseEntity.ok(projects);
@@ -39,6 +42,7 @@ public class ProjectController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('PRODUCT_OWNER')")
     public ResponseEntity<Project> createProject(@RequestBody Project project){
         Project savedProject = projectRepository.save(project);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProject);
