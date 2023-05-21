@@ -47,5 +47,5 @@ public class UserControllerTest {
         assertEquals("Ram", createdUser.getUsername());
     }
 
-    
+
 }
