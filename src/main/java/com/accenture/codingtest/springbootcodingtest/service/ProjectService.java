@@ -1,16 +1,15 @@
 package com.accenture.codingtest.springbootcodingtest.service;
 
 import com.accenture.codingtest.springbootcodingtest.entity.Project;
-import com.accenture.codingtest.springbootcodingtest.entity.User;
 import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
-@Service
+@Service("projectService")
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
@@ -22,18 +21,16 @@ public class ProjectService {
 
 
     public Project findById(UUID projectId) {
-        Project project = projectRepository.findById(projectId)
+        return projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found with Id: " + projectId));
-        return project;
     }
 
-    public List<Project> findAll() {
-        return projectRepository.findAll();
+    public Page<Project> getAllProjects(Pageable pageable) {
+        return projectRepository.findAll(pageable);
     }
 
     public Project save(Project project) {
-        Project saved = projectRepository.save(project);
-        return saved;
+        return projectRepository.save(project);
     }
 
     public Project updateProject(UUID projectId, Project project) {

@@ -4,9 +4,7 @@ import com.accenture.codingtest.springbootcodingtest.entity.Project;
 import com.accenture.codingtest.springbootcodingtest.entity.Task;
 import com.accenture.codingtest.springbootcodingtest.entity.User;
 import com.accenture.codingtest.springbootcodingtest.model.TaskStatus;
-import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepository;
 import com.accenture.codingtest.springbootcodingtest.repository.TaskRepository;
-import com.accenture.codingtest.springbootcodingtest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/api/v1/users")
-//@PreAuthorize("hasRole('ADMIN')")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -62,8 +61,5 @@ public class UserController {
         userService.delete(userId);
         return ResponseEntity.noContent().build();
     }
-
-
-
 
 }

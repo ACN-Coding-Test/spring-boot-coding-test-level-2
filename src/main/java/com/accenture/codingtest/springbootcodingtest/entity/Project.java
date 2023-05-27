@@ -13,7 +13,6 @@ public class Project {
     @Column(nullable = false,unique = true)
     private String name;
 
-
     public UUID getId() {
         return id;
     }
