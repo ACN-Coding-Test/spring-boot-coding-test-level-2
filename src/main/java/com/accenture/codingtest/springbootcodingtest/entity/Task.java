@@ -1,6 +1,8 @@
 package com.accenture.codingtest.springbootcodingtest.entity;
 
 
+import com.accenture.codingtest.springbootcodingtest.model.TaskStatus;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -16,7 +18,8 @@ public class Task {
     private String title;
     private String description;
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
     @ManyToOne
     @JoinColumn(name = "project_id",nullable = false)
     private Project project;
@@ -48,11 +51,11 @@ public class Task {
         this.description = description;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 

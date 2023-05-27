@@ -1,7 +1,7 @@
 package com.accenture.codingtest.springbootcodingtest.controller;
 
 import com.accenture.codingtest.springbootcodingtest.entity.Project;
-import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepository;
+import com.accenture.codingtest.springbootcodingtest.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,51 +13,45 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "api/v1/projects")
 public class ProjectController {
-    private final ProjectRepository projectRepository;
+
+    private final ProjectService projectService;
 
     @Autowired
-    public ProjectController(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
     }
 
-    private Project fetchProject(UUID projectId) {
-        Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found with Id: " + projectId));
-        return project;
-    }
+
 
     @GetMapping
     public ResponseEntity<List<Project>> getAllProjects() {
-        List<Project> projects = projectRepository.findAll();
+        List<Project> projects = projectService.findAll();
         return ResponseEntity.ok(projects);
     }
 
     @GetMapping("/{project_id}")
     public ResponseEntity<Project> getProjectById(@PathVariable("project_id") UUID projectId) {
-        Project project = fetchProject(projectId);
+        Project project = projectService.findById(projectId);
         return ResponseEntity.ok(project);
     }
 
     @PostMapping
-    public ResponseEntity<Project> createProject(@RequestBody Project project){
-        Project savedProject = projectRepository.save(project);
+    public ResponseEntity<Project> createProject(@RequestBody Project project) {
+        Project savedProject = projectService.save(project);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProject);
     }
 
     @PutMapping("/{project_id}")
     public ResponseEntity<Project> updateProjectById(@PathVariable("project_id") UUID projectId,
-                                                     @RequestBody Project project){
-        Project foundProject = fetchProject(projectId);
+                                                     @RequestBody Project project) {
+        Project updated = projectService.updateProject(projectId,project);
 
-        foundProject.setName(project.getName());
-
-        return ResponseEntity.ok(foundProject);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{project_id}")
-    public ResponseEntity<Project> deleteProject(@PathVariable("project_id") UUID projectId){
-        Project foundProject = fetchProject(projectId);
-        projectRepository.delete(foundProject);
+    public ResponseEntity<Project> deleteProject(@PathVariable("project_id") UUID projectId) {
+        projectService.delete(projectId);
         return ResponseEntity.noContent().build();
     }
 

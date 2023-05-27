@@ -1,7 +1,6 @@
 package com.accenture.codingtest.springbootcodingtest.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
