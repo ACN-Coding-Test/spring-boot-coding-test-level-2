@@ -1,4 +1,4 @@
-package com.accenture.codingtest.springbootcodingtest.model;
+package com.accenture.codingtest.springbootcodingtest.dataInitializer;
 
 import com.accenture.codingtest.springbootcodingtest.entity.Project;
 import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepository;
@@ -7,11 +7,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DataInitializer implements CommandLineRunner {
+public class ProjectInitializer implements CommandLineRunner {
     private final ProjectRepository projectRepository;
 
     @Autowired
-    public DataInitializer(ProjectRepository projectRepository) {
+    public ProjectInitializer(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
