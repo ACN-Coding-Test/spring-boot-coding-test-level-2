@@ -5,8 +5,11 @@ import com.accenture.codingtest.springbootcodingtest.repository.ProjectRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service("projectService")
@@ -29,6 +32,7 @@ public class ProjectService {
         return projectRepository.findAll(pageable);
     }
 
+
     public Project save(Project project) {
         return projectRepository.save(project);
     }
@@ -39,10 +43,11 @@ public class ProjectService {
         return projectRepository.save(fetch);
     }
 
-    public void delete(UUID projectId){
+    public void delete(UUID projectId) {
         Project fetch = findById(projectId);
         projectRepository.delete(fetch);
     }
+
 
 
 }

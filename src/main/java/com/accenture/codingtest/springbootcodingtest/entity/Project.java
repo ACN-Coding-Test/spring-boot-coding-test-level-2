@@ -10,7 +10,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(nullable = false,unique = true)
+    @Column(name = "name",nullable = false,unique = true)
     private String name;
 
     public UUID getId() {
@@ -27,5 +27,13 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Project { " +
+                "id= " + id +
+                " , name='" + name +
+                "' }";
     }
 }
